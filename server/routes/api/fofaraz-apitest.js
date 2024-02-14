@@ -13,13 +13,14 @@ async function apitest(req, res) {
     const web3 = new Web3(provider);
 
     //get balance of an address
-    // const address = "0x88c6c46ebf353a52bdbab708c23d0c81daa8134a";
-    // const balance = await web3.eth.getBalance(address);
-    // const etherBalance = web3.utils.fromWei(balance, 'ether');
-    // console.log("etherBalance ", etherBalance);
-    // response.etherBalance=etherBalance;
+    const address = "0x88c6c46ebf353a52bdbab708c23d0c81daa8134a";
+    const balance = await web3.eth.getBalance(address);
+    const etherBalance = web3.utils.fromWei(balance, 'ether');
+    console.log("etherBalance ", etherBalance);
+    response.etherBalance=etherBalance;
 
 
+    // call methods of a smart contract
     let contract = new web3.eth.Contract(ERC20_ABI, "0xb8c77482e45f1f44de1745f52c74426c631bdd52");
     let tokenInfo = {
         symbol: await contract.methods.symbol().call(),
